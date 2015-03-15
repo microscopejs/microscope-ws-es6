@@ -1,0 +1,34 @@
+{
+  "name": "microscope-ws-es6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microscopejs/microscope-ws-es6.git"
+  },
+  "keywords": [
+    "websocket",
+    "socket.io",
+    "POO"
+  ],
+  "author": "Benjamin Heintz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microscopejs/microscope-ws-es6/issues"
+  },
+  "homepage": "https://github.com/microscopejs/microscope-ws-es6",
+  "dependencies": {
+    "socket.io": "^1.3.5"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-babel": "^4.0.0",
+    "gulp-docco": "0.0.4",
+    "gulp-jshint": "^1.9.2",
+    "jshint-stylish": "^1.0.0"
+  }
+}

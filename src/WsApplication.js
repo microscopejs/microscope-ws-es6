@@ -4,6 +4,19 @@
 class WsApplication {
 
 	constructor(){
+
+	}
+
+	get hubs(){
+		return [];
+	}
+
+	onConnection(){
+
+	}
+
+	onDisconnect(){
+
 	}
 }
 
