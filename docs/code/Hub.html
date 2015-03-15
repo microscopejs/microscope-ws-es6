@@ -46,8 +46,41 @@
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">class</span> Hub {
 
-	constructor(){
-		
+	constructor(namespace, io, socket){
+		<span class="hljs-keyword">this</span>.namespace = namespace;
+		<span class="hljs-keyword">this</span>.io        = io;
+		<span class="hljs-keyword">this</span>.socket    = socket;
+		<span class="hljs-keyword">this</span>._parseRoute();
+	}
+
+	static namespace(){
+		<span class="hljs-keyword">return</span> <span class="hljs-string">'/'</span>;
+	}
+
+	get routes(){
+		<span class="hljs-keyword">return</span> {};
+	}
+
+	_parseRoute(){
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> route <span class="hljs-keyword">in</span> <span class="hljs-keyword">this</span>.routes){
+			<span class="hljs-keyword">this</span>.socket.on(route, <span class="hljs-keyword">this</span>.routes[route].bind(<span class="hljs-keyword">this</span>));
+		}
+	}
+
+	emit(key, obj) {
+		<span class="hljs-keyword">this</span>.socket.emit(key, obj);
+	}
+
+	emitToRoom(room, key, obj) {
+		<span class="hljs-keyword">this</span>.socket.to(room).emit(key, obj);
+	}
+
+	broadcast(key, obj) {
+		<span class="hljs-keyword">this</span>.io.of(<span class="hljs-keyword">this</span>.namespace).emit(key, obj);
+	}
+
+	broadcastToAll(key, obj) {
+		<span class="hljs-keyword">this</span>.io.sockets.emit(key, obj);
 	}
 }
 
