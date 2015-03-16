@@ -1,18 +1,23 @@
 // Imports
 var Hub = require('../../src/Hub');
 
+// Home hub
 class HomeHub extends Hub {
 
-	static namespace(){
+	// namespace prototype function
+	// allow to isolate hub connection
+	namespace(){
 		return '/home';
 	}
 
+	// getter for hub inner routing
 	get routes(){
 		return {
 			'send': this.handleMessage
 		};
 	}
 
+	// hub action call for 'send' route
 	handleMessage(model){
 		this.broadcast('sended', model);
 	}

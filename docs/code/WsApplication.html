@@ -104,19 +104,43 @@ options</p>
             
             <div class="content"><div class='highlight'><pre>	_registerHubs(){
 		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> Hub of <span class="hljs-keyword">this</span>.hubs){
-			<span class="hljs-keyword">this</span>.io.of(Hub.namespace()).on(<span class="hljs-string">'connection'</span>, (socket) =&gt; {
-				<span class="hljs-keyword">this</span>.onConnection(Hub.namespace());
-				<span class="hljs-keyword">new</span> Hub(Hub.namespace(), <span class="hljs-keyword">this</span>.io, socket);
-				socket.on(<span class="hljs-string">'disconnect'</span>, <span class="hljs-keyword">this</span>.onDisconnect.bind(<span class="hljs-keyword">this</span>, Hub.namespace()));
+			<span class="hljs-keyword">this</span>.io.of(Hub.prototype.namespace()).on(<span class="hljs-string">'connection'</span>, (socket) =&gt; {
+				<span class="hljs-keyword">this</span>.onConnection(Hub.prototype.namespace());
+				<span class="hljs-keyword">new</span> Hub(<span class="hljs-keyword">this</span>.io, socket);
+				socket.on(<span class="hljs-string">'disconnect'</span>, <span class="hljs-keyword">this</span>.onDisconnect.bind(<span class="hljs-keyword">this</span>, Hub.prototype.namespace()));
 			});
 		}
-	}
-
-	onConnection(namespace){
+	}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	onConnection(namespace){
 		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'user connected to namespace : '</span> + namespace);
-	}
-
-	onDisconnect(namespace){
+	}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	onDisconnect(namespace){
 		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'user disconnected from namespace : '</span> + namespace);
 	}
 }

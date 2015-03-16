@@ -24,18 +24,20 @@ class WsApplication {
 	// register WsApplication hub
 	_registerHubs(){
 		for(let Hub of this.hubs){
-			this.io.of(Hub.namespace()).on('connection', (socket) => {
-				this.onConnection(Hub.namespace());
-				new Hub(Hub.namespace(), this.io, socket);
-				socket.on('disconnect', this.onDisconnect.bind(this, Hub.namespace()));
+			this.io.of(Hub.prototype.namespace()).on('connection', (socket) => {
+				this.onConnection(Hub.prototype.namespace());
+				new Hub(this.io, socket);
+				socket.on('disconnect', this.onDisconnect.bind(this, Hub.prototype.namespace()));
 			});
 		}
 	}
 
+	// 
 	onConnection(namespace){
 		console.log('user connected to namespace : ' + namespace);
 	}
 
+	// 
 	onDisconnect(namespace){
 		console.log('user disconnected from namespace : ' + namespace);
 	}
