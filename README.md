@@ -3,7 +3,9 @@ microscope-ws (ES6)
 
 ## NOT NPM READY YET
 
-WebSocket application framework.
+ES6, Socket.IO fully compatible, POO WebSocket framework.
+
+[![Build Status](https://travis-ci.org/microscopejs/microscope-web-es6.svg?branch=master)](https://travis-ci.org/microscopejs/microscope-web-es6)
 
 ![microscopejs](http://microscopejs.com/images/mcsp_bg.png)
 
